@@ -1,22 +1,14 @@
+<div class="mb-3" >
+ 
+  <input type="text" [(ngModel)]="filterColorText" class="form-control" id="filterColorText"  placeholder="Search Color">
+</div>
 
- <div  class="d-flex justify-content-center" >
-    <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
 
-<table *ngIf="dataLoaded==true" class="table">
-    <thead>
-        <tr>
-            <th>Color ID</th>
-            <th>Color Name</th>
-          
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let color of colors">
-            <td>{{color.colorId}}</td>
-            <td>{{color.colorName}}</td>
-          
-        </tr>
-    </tbody>
-</table>
+<div class="list-group">
+    <a routerLink="/cars" (click)="clearCurrentColor()" [class]="currentAllColorClass()" aria-current="true">
+      All Colors
+    </a>
+    <a *ngFor="let color of colors |filterColor:filterColorText" routerLink="/cars/color/{{color.colorId}}" (click)="setCurrentColor(color)" href="#" [class]="currentColorClass(color)">{{color.colorName}}</a>
+ 
+  </div>
+  <!-- <h1 *ngIf="currentColor" >{{currentColor.colorName}}</h1> -->

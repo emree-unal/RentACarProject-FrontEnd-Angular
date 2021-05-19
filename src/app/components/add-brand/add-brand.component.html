@@ -1,0 +1,43 @@
+
+<!-- <button type="button" class="btn btn-primary form-control" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add New Brand
+   </button> -->
+
+    <button type="button" class="btn btn-sm btn-primary " data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="float:right;" >Add New Brand</button>
+   
+  
+   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title"  id="staticBackdropLabel"><strong> Brand Adding Page </strong> </h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+             <form [formGroup]="brandAddForm" >
+                 <div class="col-md-12">
+                   <input type="number" class="form-control" hidden id="brandId" formControlName="brandId">    
+                
+                   <div class="mb-3">
+                     <label for="brandName">Brand Name:</label>
+                     <input class="form-control" type="text" id="brandName" formControlName="brandName">
+                   </div>
+                
+                    
+                   </div>
+               </form>
+         </div>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+             <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="addBrand()">Save</button>
+           </div> 
+               
+             </div>
+         
+        
+         
+    
+     </div>
+   </div>
+ 
+ 

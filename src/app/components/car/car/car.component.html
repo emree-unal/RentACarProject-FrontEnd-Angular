@@ -1,27 +1,46 @@
-<div  class="d-flex justify-content-center" >
-    <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
 
-<table *ngIf="dataLoaded==true" class="table">
-    <thead>
-        <tr>
-            <th>Car ID</th>
-            <th>Brand Name</th>
-            <th>Color Name</th>
-            <th>Price</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let car of cars">
-            <td>{{car.carId}}</td>
-            <td>{{car.brandName}}</td>
-            <td>{{car.colorName}}</td>
-            <td>{{car.price}}₺</td>
-            <td>{{car.description}}</td>
-        </tr>
-    </tbody>
-</table>
+   <div class="row">
+      <div class="col-md-3">
+      <app-brand></app-brand>
+      <br>
+      <app-color></app-color>
+      </div>
+    <div class="col-md-9">
+         
+      <div  class="d-flex justify-content-center" >
+        <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      
+     
+       
+    <div class="container row">
+        <app-car-filter></app-car-filter>
+    
+        <div *ngFor="let car of cars" class="card carbox" style="width: 18rem;">
+            <img  src="{{imageBasePath}}{{car.imagePath}}" class="card-img-top" alt="..."> 
+            <div class="card-body text-center"  *ngIf="dataLoaded==true">
+              <h5 class="card-title text-center">{{car.brandName}}</h5>
+              <p class="card-text">{{car.description}}</p>
+              <h6 class="text-danger">{{car.price | currency}}</h6>
+              <a routerLink="/car/detail/{{car.carId}}" class="btn btn-primary">Go Details</a>
+            </div>
+          </div>
+    </div>
+   
+      </div>
+   
+  </div>
+ 
+
+
+
+
+
+
+
+
+
+
 
 

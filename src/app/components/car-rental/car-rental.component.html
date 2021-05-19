@@ -1,0 +1,51 @@
+
+<button type="button" class="btn btn-primary form-control" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+   Rent
+  </button>
+  
+ 
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"  id="staticBackdropLabel"><strong> {{carDetail.brandName}} | Rental </strong> </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="rentalAddForm" >
+                <div class="col-md-12">
+                  <input type="number" class="form-control" hidden [(ngModel)]="carIdparam" id="carId" formControlName="carId">    
+               
+                         
+                  <div class="mb-3">
+                    <label>Select Customer</label>
+                    <select [(ngModel)]="customerIdValue"  formControlName="customerId" class="form-select" >
+                      <option *ngFor="let customer of customers" [selected]="selectedcustomer(customer.customerId)"   [ngValue]="customer.customerId" >{{customer.userName}}  | {{customer.companyName}}</option>
+                    </select>
+    
+                  </div>
+                  <div class="mb-3">
+                    <label for="rentDate">RentDate:</label>
+                    <input class="form-control" type="date" id="rentDate" formControlName="rentDate">
+                  </div>
+                  <div class="mb-3">
+                    <label for="returnDate">ReturnDate:</label>
+                    <input class="form-control" type="date" id="returnDate" formControlName="returnDate">
+                  </div>
+                   
+                  </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal"  (click)="rentalDatesIsAvailable()">Rent Now</button>
+          </div> 
+              
+            </div>
+        
+       
+        
+   
+    </div>
+  </div>
+

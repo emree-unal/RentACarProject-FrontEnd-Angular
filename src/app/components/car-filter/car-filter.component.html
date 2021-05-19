@@ -1,0 +1,36 @@
+
+ <div class="card" >
+   
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+        
+            <label for="brandFilter">Select Brand</label>
+            <select [(ngModel)]="brandFilter" class="form-select" aria-label="Default select example">
+              <option class="dropdown-item" disabled selected value="undefined">Select an Option</option>
+              <option *ngFor="let brand of brands" [selected]="selectedbrand(brand.brandId)" value="{{brand.brandId}}">{{brand.brandName}}</option>
+            
+            </select>
+       
+      
+        </div>
+        <div class="col-md-4">
+          <label for="brandFilter">Select Color</label>
+         <select [(ngModel)]="colorFilter" class="form-select"   >
+          <option class="dropdown-item" disabled selected value="undefined">Select an Option</option>
+            <option *ngFor="let color of colors"  [selected]="selectedcolor(color.colorId)" value="{{color.colorId}}">{{color.colorName}}</option>
+          
+          </select>
+        </div>
+        <div class="col-md-2">
+          <br>
+         <button routerLink="/cars/filter/{{brandFilter}}/{{colorFilter}}" class="btn btn-primary form-control">Search</button>
+         </div>
+         <div class="col-md-2">
+           <br>
+          <button routerLink="/cars" class="btn btn-warning form-control">Clear</button>
+          </div>
+       
+        </div>
+    </div>
+  </div>

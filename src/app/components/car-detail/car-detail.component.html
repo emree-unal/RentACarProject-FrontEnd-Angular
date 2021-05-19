@@ -1,0 +1,89 @@
+
+  <div class="row">
+    <div class="col-md-7">
+      <div id="carouselExampleDark" class="carousel carousel-fade slide carousel-dark" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators">
+          <li data-bs-target="#carouselExampleDark" *ngFor="let li of carImages; let i = index" [attr.data-bs-slide-to]="i" [class]="i == 0 ? 'active' : ''"></li>
+        </ol>
+
+      
+          <div class="carousel-inner">
+            <div *ngFor="let carImage of carImages" [class]="getCurrentImageClass(carImage)" data-bs-interval="2000">
+              <img class="d-block w-100" src="{{imageBasePath}}{{carImage.imagePath}}" alt="First slide">
+            </div>
+           
+          </div>
+       
+      </div>
+      
+    </div>
+    <div class="col-md-5">
+      <div *ngIf="cardetail" class="card" style="width: 24.3rem;">
+    
+        <div class="card-body">
+          <h5 class="card-title text-center" > <strong>{{cardetail.brandName}} </strong> </h5> 
+          <p class="card-text">{{cardetail.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Color:</strong>  {{cardetail.colorName}}</li>
+          <li class="list-group-item"><strong>Model Year:</strong> {{cardetail.modelYear}}</li>
+          <li class="list-group-item "><strong>Price: </strong>  {{cardetail.price}}$</li>
+        </ul>
+        <div class="card-body">
+          <app-car-rental></app-car-rental>
+        </div>
+    </div>
+    </div>
+    <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel"> <strong> Rental Details Screen </strong></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          <form *ngIf="rentalAddForm" [formGroup]="rentalAddForm" >
+            <div class="col-md-12">
+             
+              <div class="mb-3">
+                <label>Select Customer</label>
+                <select [(ngModel)]="customerIdValue"  formControlName="customerId" class="form-select" aria-label="Default select example">
+                  <option *ngFor="let customer of customers"  [selected]="selectedcustomer(customer.customerId)"   value="{{customer.customerId}}" >{{customer.userName}}  | {{customer.companyName}}</option>
+                </select>
+
+              </div>
+              <div class="mb-3">
+                <label for="rentDate">RentDate:</label>
+                <input class="form-control" type="date" id="rentDate" formControlName="rentDate">
+              </div>
+              <div class="mb-3">
+                <label for="returnDate">ReturnDate:</label>
+                <input class="form-control" type="date" id="returnDate" formControlName="returnDate">
+              </div>
+               
+              </div>
+          </form>
+              
+               
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" (click)="addRental()">Rent Now</button>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  
+
+ 
+
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button> -->
+
+<!-- Modal -->
+
+
+

@@ -1,0 +1,132 @@
+
+<div class="container">
+    <div class="row">
+  
+  
+        <div class="col-md-12 col-md-offset-1">
+  
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6  ">
+                            <h3 class="panel-title text-center">Car List</h3>
+                        </div>
+                      
+                    </div>
+                    <div class="row">
+                      <div style="margin-bottom: 5px;" >
+                          <!-- <button type="button" class="btn btn-sm btn-primary " style="float:right;" >Add New Product</button> -->
+                          <app-add-car></app-add-car>
+                      </div>
+                    </div>
+                   
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-list">
+                        <thead>
+                            <tr>
+  
+                                <th class="hidden-xs">ID</th>
+                                <th>BrandName</th>
+                                <th>ColorName</th>
+                                <th>Price</th>
+                                
+                                
+                                <th style="text-align:center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                            <tr *ngFor="let car of cars">
+  
+                                <td >{{car.carId}}</td>
+                                <td>{{car.brandName}}</td>
+                                <td >{{car.colorName}}</td>
+                                <td>{{car.price | currency}}</td>
+                               
+                                <td align="center">
+                                  <button class="btn btn-primary "  style="margin: 4px;" data-bs-toggle="modal" data-bs-target="#staticBackdropupdate" (click)="getCarById(car.carId)" > Edit  </button>
+                                    <!-- <a class="btn btn-primary " style="margin: 4px;" > Edit  </a> -->
+                                    <a class="btn btn-danger " style="margin: 4px;" (click)="deleteCar(car.carId)" >Delete</a>
+                                    <a class="btn btn-info" style="margin: 4px;">Detail</a>
+                                </td>
+                            </tr>
+                            
+  
+  
+  
+                        </tbody>
+                    </table>
+  
+                </div>
+              
+                   
+               
+            </div>
+  
+        </div>
+    </div>
+  </div>
+
+
+    
+<div class="modal fade" id="staticBackdropupdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"  id="staticBackdropLabel"><strong> Car Update Page </strong> </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="carUpdateForm" >
+                <div class="col-md-12">
+                  <label for="id">Car Id:</label>
+                  <input type="number" class="form-control" readonly  id="id" formControlName="id">    
+               
+                  <div class="mb-3">
+                    <label for="brandId">Brand Name:</label>
+                    
+                    <select [(ngModel)]="brandId"  formControlName="brandId" class="form-select" >
+                       <option *ngFor="let brand of brands" [selected]="selectedbrand(brand.brandId)"   [ngValue]="brand.brandId" >{{brand.brandName}}</option>
+                     </select>
+                  </div>
+                  <div class="mb-3">
+                   <label for="colorId">Color Name:</label>
+                  
+                   <select [(ngModel)]="colorId"  formControlName="colorId" class="form-select" >
+                       <option *ngFor="let color of colors" [selected]="selectedcolor(color.colorId)"   [ngValue]="color.colorId" >{{color.colorName}}</option>
+                     </select>
+                 </div>
+                 <div class="mb-3">
+                   <label for="dailyPrice">Price:</label>
+                   <input class="form-control" type="number" id="dailyPrice" formControlName="dailyPrice">
+                 </div>
+                 <div class="mb-3">
+                   <label for="description">Description:</label>
+                   <input class="form-control" type="text" id="description" formControlName="description">
+                 </div>
+                 <div class="mb-3">
+                   <label for="modelYear">Model Year:</label>
+                   <input class="form-control" type="text" id="modelYear" formControlName="modelYear">
+                 </div>
+               
+               
+                   
+                 
+               
+                   
+                  </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="updateCar()">Save</button>
+          </div> 
+              
+            </div>
+        
+       
+        
+   
+    </div>
+  </div>

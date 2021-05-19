@@ -1,0 +1,64 @@
+
+
+   <button type="button" class="btn btn-sm btn-primary " data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="float:right;" >Add New Car</button>
+   
+  
+   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title"  id="staticBackdropLabel"><strong> Car Adding Page </strong> </h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+             <form [formGroup]="carAddForm" >
+                 <div class="col-md-12">
+                   <input type="number" class="form-control" hidden id="carId" formControlName="carId">    
+                
+                   <div class="mb-3">
+                     <label for="brandId">Brand Name:</label>
+                     
+                     <select [(ngModel)]="brandId"  formControlName="brandId" class="form-select" >
+                        <option *ngFor="let brand of brands" [selected]="selectedbrand(brand.brandId)"   [ngValue]="brand.brandId" >{{brand.brandName}}</option>
+                      </select>
+                   </div>
+                   <div class="mb-3">
+                    <label for="colorId">Color Name:</label>
+                   
+                    <select [(ngModel)]="colorId"  formControlName="colorId" class="form-select" >
+                        <option *ngFor="let color of colors" [selected]="selectedcolor(color.colorId)"   [ngValue]="color.colorId" >{{color.colorName}}</option>
+                      </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="dailyPrice">Price:</label>
+                    <input class="form-control" type="number" id="dailyPrice" formControlName="dailyPrice">
+                  </div>
+                  <div class="mb-3">
+                    <label for="description">Description:</label>
+                    <input class="form-control" type="text" id="description" formControlName="description">
+                  </div>
+                  <div class="mb-3">
+                    <label for="modelYear">Model Year:</label>
+                    <input class="form-control" type="text" id="modelYear" formControlName="modelYear">
+                  </div>
+                
+                
+                    
+                   </div>
+               </form>
+         </div>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+             <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="addCar()">Save</button>
+           </div> 
+               
+             </div>
+         
+        
+         
+    
+     </div>
+   </div>
+ 
+ 
+
